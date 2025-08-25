@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+header h1 {
+    color: #1a73e8;
+}
+
+#launch-button {
+    background-color: #1a73e8;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#launch-button:hover {
+    background-color: #155ab6;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+.iframe-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 177.77%; /* 9:16 Aspect Ratio */
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#device-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.note {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 15px;
+}
