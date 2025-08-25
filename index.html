@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Cloud Service - Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ยินดีต้อนรับสู่ Android Cloud Service (Demo)</h1>
+            <p>บริการ Android บนคลาวด์ พร้อมใช้งานได้ทันที</p>
+        </header>
+        
+        <main id="main-content">
+            <button id="launch-button">🚀 Launch Your Android Device</button>
+        </main>
+
+        <div id="device-container" class="hidden">
+            <h2>Your Virtual Device</h2>
+            <p>กำลังโหลดอุปกรณ์ของคุณ... (อาจใช้เวลา 1-2 นาทีในการบูทครั้งแรก)</p>
+            <div class="iframe-wrapper">
+                <iframe id="device-frame" src="" frameborder="0"></iframe>
+            </div>
+            <p class="note">รหัสผ่าน VNC (ถ้าถาม): <strong>demopass</strong></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('launch-button').addEventListener('click', () => {
+            // ซ่อนปุ่มและเนื้อหาหลัก
+            document.getElementById('main-content').classList.add('hidden');
+            
+            // แสดง container ของอุปกรณ์
+            const deviceContainer = document.getElementById('device-container');
+            deviceContainer.classList.remove('hidden');
+
+            // ตั้งค่า URL ของ iframe ไปยัง port ของ android-device
+            // ใน Demo นี้ เราใช้ localhost:6080 ที่เรา map ไว้
+            // ในระบบจริง URL นี้จะถูกสร้างขึ้นแบบไดนามิก
+            const deviceFrame = document.getElementById('device-frame');
+            deviceFrame.src = 'http://localhost:6080/'; 
+        });
+    </script>
+</body>
+</html>
