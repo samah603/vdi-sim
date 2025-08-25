@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # บริการที่ 1: เว็บไซต์ของผู้ให้บริการ
+  website:
+    image: nginx:alpine
+    container_name: demo_website
+    ports:
+      - "8080:80" # เข้าเว็บของเราได้ที่ http://localhost:8080
+    volumes:
+      - ./website:/usr/share/nginx/html # นำไฟล์เว็บของเราไปใส่ใน Nginx
+    networks:
+      - vdi-net
+
+  # บริการที่ 2: เครื่อง Android เสมือน
+  android-device:
+    image: budtmo/docker-android-x86:11.0.0-r1 # Image ที่มี Android 11 พร้อม Web Viewer
+    container_name: demo_android_device
+    ports:
+      - "6080:6080" # เข้าถึงหน้าจอ Android โดยตรงได้ที่ http://localhost:6080
+    privileged: true # จำเป็นเพื่อให้ Android Emulator ทำงานได้
+    environment:
+      - DEVICE=Samsung Galaxy S10
+      - VNC_PASSWORD=demopass
+    networks:
+      - vdi-net
+
+networks:
+  vdi-net:
+    driver: bridge
